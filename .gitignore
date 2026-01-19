@@ -9,3 +9,8 @@ __pycache__/
 *.key
 *.log
 .DS_Store
+
+# Project outputs 
+projects/**/output/*
+!projects/**/output/.gitkeep
+!projects/**/output/sample_output.json

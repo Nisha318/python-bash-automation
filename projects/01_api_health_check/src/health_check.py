@@ -4,6 +4,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional
+from unittest import result
 
 import requests
 
@@ -65,6 +66,8 @@ def main() -> None:
     else:
         print(json.dumps(result, indent=2))
 
-
+    if not result["ok"]:
+        raise SystemExit(1)
+    
 if __name__ == "__main__":
     main()

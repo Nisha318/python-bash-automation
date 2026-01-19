@@ -8,3 +8,6 @@
 - Freeze dependencies: `pip freeze > requirements.txt`
 - Verify interpreter: `which python`
 - Verify pip: `python -m pip --version`
+mkdir -p projects/01_api_health_check/{src,bash,output}
+
+chmod +x projects/01_api_health_check/bash/run.sh

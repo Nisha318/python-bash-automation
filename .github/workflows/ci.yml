@@ -37,9 +37,12 @@ jobs:
     - name: Verify health check detects failures
       run: |
         # This should fail and return exit code 1
+        set +e  # Temporarily allow failures
         bash projects/01_api_health_check/bash/run.sh https://httpbin.org/status/500 || exit_code=$?
+        set -e  # Re-enable exit on error
+
         if [ "$exit_code" != "1" ]; then
-          echo "Health check should exit with code 1 on failure"
+          echo "Health check should exit with code 1 on failure, got: $exit_code"
           exit 1
         fi
         echo "✓ Health check correctly exits non-zero on failure"

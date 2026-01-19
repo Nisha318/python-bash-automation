@@ -54,6 +54,11 @@ output/sample_output.json
 ```
 ---
 
+## CI/CD
+
+This repository uses GitHub Actions for continuous integration.
+All automation scripts are tested on push to ensure reliability.
+
 ## Notes
 
 The script exits with a non-zero status when a health check fails, making it

@@ -17,16 +17,21 @@ TIMEOUT="${2:-10}"
 TS="$(date +"%Y%m%d_%H%M%S")"
 OUT_FILE="${OUTPUT_DIR}/healthcheck_${TS}.json"
 
-# Activate virtual environment (cross-platform)
-if [ -f "${REPO_ROOT}/.venv/Scripts/activate" ]; then
-    # Windows (Git Bash)
-    source "${REPO_ROOT}/.venv/Scripts/activate"
-elif [ -f "${REPO_ROOT}/.venv/bin/activate" ]; then
-    # Linux/macOS
-    source "${REPO_ROOT}/.venv/bin/activate"
+# Activate virtual environment (skip in CI)
+# GitHub Actions sets CI=true and doesn't need venv
+if [ "${CI:-false}" != "true" ]; then
+    if [ -f "${REPO_ROOT}/.venv/Scripts/activate" ]; then
+        # Windows (Git Bash)
+        source "${REPO_ROOT}/.venv/Scripts/activate"
+    elif [ -f "${REPO_ROOT}/.venv/bin/activate" ]; then
+        # Linux/macOS
+        source "${REPO_ROOT}/.venv/bin/activate"
+    else
+        echo "Warning: Virtual environment not found at ${REPO_ROOT}/.venv"
+        echo "Continuing with system Python..."
+    fi
 else
-    echo "Error: Virtual environment not found at ${REPO_ROOT}/.venv"
-    exit 1
+    echo "Running in CI environment, using system Python"
 fi
 
 # Run health check

@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-01-19T01:47:36+00:00",
+  "url": "https://httpbin.org/status/200",
+  "timeout_seconds": 10.0,
+  "ok": true,
+  "status_code": 200,
+  "elapsed_ms": 666.56,
+  "error": null
+}

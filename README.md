@@ -35,12 +35,6 @@ scripts/  - Shared shell helpers
 docs/     - Notes and design decisions
 logs/     - Curated command history
 
-## Notes
-
-- The virtual environment (.venv/) is intentionally not committed
-- Dependencies are tracked in requirements.txt
-- Development commands are recorded in logs/commands.md
-
 ## Projects
 
 - 01_api_health_check

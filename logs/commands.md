@@ -48,3 +48,10 @@
 - CI pipeline passing ✅
 - All tests green
 - Badge activated
+
+## 2026-02-20 - Disk Space Checker  
+- `df -H -x tmpfs` — check disk usage excluding virtual filesystems
+- `awk '{print $5}'` — extract the 5th column (usage %)
+- `tr -d '%'` — strip the % character for numeric comparison
+- `chmod +x script.sh` — make script executable
+- `crontab -e` — schedule script to run automatically

@@ -21,10 +21,10 @@ while read -r LINE; do
     MOUNT=$(echo "$LINE" | awk '{print $6}')
 
     # Conditional: check if usage exceeds threshold
-    if [ "$USAGE" -ge "$THRESHOLD" \; then
+    if [ "$USAGE" -ge "$THRESHOLD" ]; then
         echo "⚠️ ALERT: $FILESYSTEM mounted on $MOUNT is at ${USAGE}% (threshold: ${THRESHOLD}%)"
         echo "$DATE | ALERT | $FILESYSTEM ($MOUNT) at ${USAGE}%" >> "$ALERT_LOG"
-        ALERT_COUNT$((ALERT_COUNT + 1))
+        ALERT_COUNT=$((ALERT_COUNT + 1))
     else
         echo "✅ $FILESYSTEM mounted on $MOUNT is at ${USAGE}%"
     fi
@@ -32,9 +32,9 @@ while read -r LINE; do
 
 # ------------ Summary -----------------------------
 echo "---------------------------------------"
-if ["$ALERT_COUNT" -gt 0 ]; then
+if [ "$ALERT_COUNT" -gt 0 ]; then
     echo "⚠️ $ALERT_COUNT filesystem(s) over ${THRESHOLD}% threshold!"
-    echo"     Alerts logged to: $ALERT_LOG"
+    echo "     Alerts logged to: $ALERT_LOG"
 else
     echo "✅ All filesystems are within the ${THRESHOLD}% threshold."
 fi

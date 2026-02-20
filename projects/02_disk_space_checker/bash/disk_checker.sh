@@ -1,6 +1,6 @@
 #!/bin/bash
 #------ Configuration -------------------------------
-THRESHOLD=80                # Alert if disk usage exceeds this %
+THRESHOLD=10                # Alert if disk usage exceeds this %
 ALERT_LOG="/tmp/disk_alerts.log"   # Log file for alerts
 
 # ---------- Variables -----------------------------
